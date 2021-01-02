@@ -67,17 +67,15 @@ function plotData() {
     });
 }
 
-plotData();
-
 // create function to get metadata
-function getMetaData(value) {
+function getMetaData(id) {
 
     //read samples.json
     d3.json("samples.json").then((data) =>{
     // create variable for metadata
         var metadata = data.metadata;
     // create variable for filtered metadata by id
-        var filtermeta = metadata.filter(meta => meta.id.toString() === value)[0];
+        var filtermeta = metadata.filter(meta => meta.id.toString() === id)[0];
     // create variable to select demographics panel using d3
         var demoPanel = d3.select("#sample-metadata");
     // empty panel before getting new info
@@ -89,3 +87,29 @@ function getMetaData(value) {
     });
 }
 
+// create function for change event
+function optionChanged(id) {
+    plotData(id);
+    getMetaData(id);
+}
+
+// create funcition for initial rendering of data and choose id in dropdown menu
+function init() {
+    // select the dropdown menu
+    var dropdown = d3.select("#selDataset");
+
+    // read samples.json
+    d3.json("samples.json").then((data) => {
+
+        // choose the id for the dropdown menu
+        data.names.forEach(function(name) {
+            dropdown.append("option").text(name).property("value");
+        });
+
+        // call the functions to display the data and the plots to the page
+        plotData(data.names[0]);
+        getMetaData(data.names[0]);
+    })
+}
+
+init();
