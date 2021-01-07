@@ -1,11 +1,11 @@
-function plotGaugeChart() {
+function plotGaugeChart(wfreq) {
 
-    var demoPanel = d3.select("#sample-metadata");
-    var gaugeValue = demoPanel.text(wfreq).property("value");
+    // var demoPanel = d3.selectAll("#sample-metadata");
+    // var gaugeValue = demoPanel.text(wfreq).property("value");
     var data = [
         {
           domain: { x: [0, 1], y: [0, 1] },
-          value: gaugeValue,
+          value: wfreq,
           title: { text: "Belly Button Washing Frequency" },
           type: "indicator",
           mode: "gauge+number",
@@ -30,4 +30,4 @@ function plotGaugeChart() {
       Plotly.newPlot('gauge', data, layout);
 
 }
-plotGaugeChart();
+// plotGaugeChart();

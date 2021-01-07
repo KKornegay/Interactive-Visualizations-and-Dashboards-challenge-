@@ -63,7 +63,16 @@ function plotData() {
 
     // create bubble plot
     Plotly.newPlot("bubble", data2, layout2);
+         // create variable for metadata
+         var metadata = data.metadata;
+         // create variable for filtered metadata by id
+         var filtermeta = metadata.filter(meta => meta.id === id);
+         
+         var result = filtermeta[0];
 
+         var frequency = result.wfreq
+
+    plotGaugeChart(frequency);
     });
 }
 
