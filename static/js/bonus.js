@@ -30,4 +30,4 @@ function plotGaugeChart(wfreq) {
       Plotly.newPlot('gauge', data, layout);
 
 }
-// plotGaugeChart();
+plotGaugeChart();

@@ -63,7 +63,9 @@ function plotData() {
 
     // create bubble plot
     Plotly.newPlot("bubble", data2, layout2);
-         // create variable for metadata
+ // I tried here to get the bonus to work but couldn't quite figure out where I went wrong
+ 
+        // create variable for metadata
          var metadata = data.metadata;
          // create variable for filtered metadata by id
          var filtermeta = metadata.filter(meta => meta.id === id);
